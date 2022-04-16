@@ -11,7 +11,7 @@ router.post("/payment_gateway/payumoney", (req, res) => {
     req.body.email = req.user.email;
     req.body.firstname = req.user.username;
     const pay = req.body;
-    const hashString = process.env.MERCHANT_KEY + "|" + pay.txnid + "|" + pay.amount + "|" + pay.productinfo + "|" + pay.firstname + "|" + pay.email + "|" + "||||||||||" + process.env.MERCHANT_SALT;
+    // const hashString = process.env.MERCHANT_KEY + "|" + pay.txnid + "|" + pay.amount + "|" + pay.productinfo + "|" + pay.firstname + "|" + pay.email + "|" + "||||||||||" + process.env.MERCHANT_SALT;
     const sha = new jsSHA("SHA-512", "TEXT");
     sha.update(hashString);
     const hash = sha.getHash("HEX");
