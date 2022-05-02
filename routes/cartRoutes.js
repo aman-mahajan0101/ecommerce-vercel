@@ -10,12 +10,7 @@ router.get("/user/cart", isLoggedIn, async (req, res) => {
 
   const totalAmount = user.cart.reduce((currentSum, product) => currentSum + product.item.price * product.qty, 0);
 
-  // const productInfo = user.cart.map((p) => p.desc);
-
-  // console.log(productInfo);
-
   res.render("cart/cart", { user, totalAmount });
-  // res.render("cart/cart", { user, totalAmount, productInfo });
 });
 
 router.post("/user/:productid/cart", isLoggedIn, async (req, res) => {

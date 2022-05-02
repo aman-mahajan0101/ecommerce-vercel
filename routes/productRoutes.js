@@ -6,7 +6,7 @@ const { product } = require("../controllers/product");
 // GET all the products from the database
 router.route("/").get(product.getAllProducts).post(isLoggedIn, validateProduct, product.createProduct);
 
-router.get("/search", isLoggedIn, product.searchProduct);
+router.get("/search", product.searchProduct);
 
 router.get("/new", isLoggedIn, product.createProductForm);
 

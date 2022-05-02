@@ -3,7 +3,7 @@ const router = express.Router();
 const { isLoggedIn } = require("../../middleware");
 const Product = require("../../models/product");
 
-router.get("/products/filtered/:value", isLoggedIn, async (req, res) => {
+router.get("/products/filtered/:value", async (req, res) => {
   const { value } = req.params;
   console.log(value);
 

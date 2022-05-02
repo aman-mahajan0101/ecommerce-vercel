@@ -134,10 +134,13 @@ const deleteReview = async (req, res) => {
 
 const searchProduct = async (req, res) => {
   const { query } = req.query;
-  console.log(query);
-  console.log(req.query);
-  const products = await Product.find({ name: query });
-  console.log(products);
+  const Q = query
+    .toLowerCase()
+    .split(" ")
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(" ");
+
+  const products = await Product.find({ name: { $regex: Q } });
   res.render("products/index", { products });
 };
 
