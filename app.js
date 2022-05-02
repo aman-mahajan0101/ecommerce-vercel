@@ -16,8 +16,6 @@ const User = require("./models/user");
 const MongoStore = require("connect-mongo");
 const favicon = require("serve-favicon");
 
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/shopping-app";
-
 //routes
 const productRoutes = require("./routes/productRoutes");
 const authRoutes = require("./routes/authRoutes");
@@ -28,6 +26,8 @@ const cartRoutes = require("./routes/cartRoutes");
 const cartAPI = require("./routes/apis/cartAPI");
 const likeProductApi = require("./routes/apis/likeFunctionality");
 const filterProductsApi = require("./routes/apis/filterFunctionality");
+
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/shopping-app";
 
 mongoose
   .connect(dbUrl)
@@ -41,6 +41,14 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+// Routes
+app.use("/products", productRoutes);
+app.use(authRoutes);
+app.use(cartRoutes);
+app.use(cartAPI);
+app.use(likeProductApi);
+app.use(filterProductsApi);
+app.use(favicon(path.join(__dirname + "/favicon.png")));
 
 const secret = process.env.SECRET || "weneedabettersecret";
 
@@ -94,16 +102,6 @@ app.get("/", (req, res) => {
 app.get("/", (req, res) => {
   res.send("Home Page");
 });
-
-// Routes
-app.use("/products", productRoutes);
-app.use(authRoutes);
-app.use(cartRoutes);
-app.use(cartAPI);
-// app.use(payment);
-app.use(likeProductApi);
-app.use(filterProductsApi);
-app.use(favicon(path.join(__dirname + "/favicon.png")));
 
 app.get("/error", (req, res) => {
   res.render("error");

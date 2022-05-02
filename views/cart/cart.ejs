@@ -53,25 +53,8 @@
         <% } %>
         <li class="list-group-item fw-bold">Total Amount : &#8377; <span><%=totalAmount%></span></li>
       </ul>
-      <!-- <form action="/payment_gateway/payumoney" method="POST">
-        <input type="hidden" name="amount" value="<%=totalAmount%>" />
-        <input type="hidden" name="phone" value="+919898989898" />
-        <input type="hidden" name="service_provider" value="payu_paisa" />
-        <input type="hidden" class="product" name="productinfo" value="fdf" />
 
-        <button type="submit" class="btn btn-sm btn-success my-3">Checkout</button>
-      </form> -->
-      <form action="https://test.payu.in/_payment" method="post">
-        <input type="hidden" name="key" value="gtKFFx" />
-        <input type="hidden" name="txnid" value="t6svtqtjRdl4qs" />
-        <input type="hidden" name="productinfo" value="iPhone" />
-        <input type="hidden" name="amount" value="<%=totalAmount%>" />
-        <input type="hidden" name="email" value="test@gmail.com" />
-        <input type="hidden" name="firstname" value="Ashish" />
-        <input type="hidden" name="surl" value="http://localhost:3000/payment/success" />
-        <input type="hidden" name="furl" value="http://localhost:3000/payment/fail" />
-        <input type="hidden" name="phone" value="9988776655" />
-        <input type="hidden" name="hash" value="0552c2067a6bcad4bca4221c49feb6af09c6d5e724ade41d9bfc990301c467eb84268b025118299768b50927e1414c5b4a48638ae050375d11e3d3dac447b60e" />
+      <form>
         <button type="submit" class="btn btn-sm btn-success my-3">Checkout</button>
       </form>
     </div>
