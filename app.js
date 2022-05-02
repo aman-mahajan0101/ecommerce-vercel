@@ -20,12 +20,19 @@ const favicon = require("serve-favicon");
 const productRoutes = require("./routes/productRoutes");
 const authRoutes = require("./routes/authRoutes");
 const cartRoutes = require("./routes/cartRoutes");
-// const payment = require("./routes/payment");
 
 //APIs
 const cartAPI = require("./routes/apis/cartAPI");
 const likeProductApi = require("./routes/apis/likeFunctionality");
 const filterProductsApi = require("./routes/apis/filterFunctionality");
+// Routes
+app.use("/products", productRoutes);
+app.use(authRoutes);
+app.use(cartRoutes);
+app.use(cartAPI);
+app.use(likeProductApi);
+app.use(filterProductsApi);
+app.use(favicon(path.join(__dirname + "/favicon.png")));
 
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/shopping-app";
 
@@ -41,14 +48,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-// Routes
-app.use("/products", productRoutes);
-app.use(authRoutes);
-app.use(cartRoutes);
-app.use(cartAPI);
-app.use(likeProductApi);
-app.use(filterProductsApi);
-app.use(favicon(path.join(__dirname + "/favicon.png")));
 
 const secret = process.env.SECRET || "weneedabettersecret";
 
