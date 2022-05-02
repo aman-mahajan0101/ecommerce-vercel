@@ -22,7 +22,7 @@ const authRoutes = require("./routes/authRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 
 //APIs
-const cartAPI = require("./routes/apis/cartAPI");
+const cartAPI = require("./routes/apis/CartAPI");
 const likeProductApi = require("./routes/apis/likeFunctionality");
 const filterProductsApi = require("./routes/apis/filterFunctionality");
 // Routes
