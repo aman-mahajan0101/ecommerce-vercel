@@ -16,24 +16,6 @@ const User = require("./models/user");
 const MongoStore = require("connect-mongo");
 const favicon = require("serve-favicon");
 
-//routes
-const productRoutes = require("./routes/productRoutes");
-const authRoutes = require("./routes/authRoutes");
-const cartRoutes = require("./routes/cartRoutes");
-
-//APIs
-const cartAPI = require("./routes/apis/CartAPI");
-const likeProductApi = require("./routes/apis/likeFunctionality");
-const filterProductsApi = require("./routes/apis/filterFunctionality");
-// Routes
-app.use("/products", productRoutes);
-app.use(authRoutes);
-app.use(cartRoutes);
-app.use(cartAPI);
-app.use(likeProductApi);
-app.use(filterProductsApi);
-app.use(favicon(path.join(__dirname + "/favicon.png")));
-
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/shopping-app";
 
 mongoose
@@ -94,6 +76,16 @@ app.use((req, res, next) => {
   next();
 });
 
+//routes
+const productRoutes = require("./routes/productRoutes");
+const authRoutes = require("./routes/authRoutes");
+const cartRoutes = require("./routes/cartRoutes");
+
+//APIs
+const cartAPI = require("./routes/apis/CartAPI");
+const likeProductApi = require("./routes/apis/likeFunctionality");
+const filterProductsApi = require("./routes/apis/filterFunctionality");
+
 app.get("/", (req, res) => {
   res.render("home");
 });
@@ -101,6 +93,15 @@ app.get("/", (req, res) => {
 app.get("/", (req, res) => {
   res.send("Home Page");
 });
+
+// Routes
+app.use("/products", productRoutes);
+app.use(authRoutes);
+app.use(cartRoutes);
+app.use(cartAPI);
+app.use(likeProductApi);
+app.use(filterProductsApi);
+app.use(favicon(path.join(__dirname + "/favicon.png")));
 
 app.get("/error", (req, res) => {
   res.render("error");
