@@ -2,13 +2,13 @@
   "name": "e-commerce",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "engines": {
     "node": "16.x",
     "npm": "8.1.2"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Aman",
@@ -24,6 +24,7 @@
     "joi": "^17.6.0",
     "jssha": "^3.2.0",
     "method-override": "^3.0.0",
+    "mongod": "^2.0.0",
     "mongoose": "^6.2.3",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",

@@ -16,7 +16,9 @@ const User = require("./models/user");
 const MongoStore = require("connect-mongo");
 const favicon = require("serve-favicon");
 
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/shopping-app";
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/ecommerce-app";
+
+// const dbUrl = "mongodb://localhost:27017/ecommerce-app";
 
 mongoose
   .connect(dbUrl)
