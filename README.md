@@ -93,5 +93,5 @@ E-Commerce
 ## Deployed At
 
 ```
-https://ecommerce-mu-five.vercel.app/products
+https://ecommerce-mu-five.vercel.app
 ```
